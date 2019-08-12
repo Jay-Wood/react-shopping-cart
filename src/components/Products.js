@@ -1,16 +1,21 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { ProductContext } from "../contexts/ProductContext";
 // Components
 import Product from './Product';
 
-const Products = props => {
+
+const Products = () => {
+	//what's with the {} around products and addItem? Don't we need []?
+	const { products, addItem }  = useContext(ProductContext);
+
 	return (
+		// <ProductContext.
 		<div className="products-container">
-			{props.products.map(product => (
+			{products.map(product => (
 				<Product
 					key={product.id}
 					product={product}
-					addItem={props.addItem}
+					addItem={addItem}
 				/>
 			))}
 		</div>
